@@ -216,7 +216,7 @@ export default function App() {
 
   return (
     <div style={{ maxWidth: 900, margin: "40px auto", padding: 16, fontFamily: "system-ui" }}>
-      <h2>YouTube Video Looper</h2>
+      <h2>YouLoop: Play YouTube videos on loop!</h2>
 
       <form
         onSubmit={(e) => {
