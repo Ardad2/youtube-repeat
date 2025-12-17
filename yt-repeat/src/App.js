@@ -93,7 +93,6 @@ export default function App() {
     if (!videoId) return "";
 
     const params = new URLSearchParams();
-    params.set("autoplay", "1");
     params.set("mute", "1");
     params.set("enablejsapi", "1");
     params.set("playsinline", "1");
