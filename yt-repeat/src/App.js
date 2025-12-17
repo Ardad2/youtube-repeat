@@ -93,12 +93,14 @@ export default function App() {
     if (!videoId) return "";
 
     const params = new URLSearchParams();
+    params.set("autoplay", "1");
     params.set("mute", "1");
     params.set("enablejsapi", "1");
     params.set("playsinline", "1");
 
     return `https://www.youtube.com/embed/${videoId}?${params.toString()}`;
   }, [videoId]);
+
 
   useEffect(() => {
     let cancelled = false;
@@ -202,6 +204,15 @@ export default function App() {
   }, [loopOn, startTime, endTime, duration, videoId]);
 
 
+    function unmuteVideo() {
+    try {
+      playerRef.current.unMute();
+      playerRef.current.setVolume(100);
+      playerRef.current.playVideo();
+    } catch {}
+  }
+
+
 
   return (
     <div style={{ maxWidth: 900, margin: "40px auto", padding: 16, fontFamily: "system-ui" }}>
@@ -232,6 +243,16 @@ export default function App() {
         >
           Loop: {loopOn ? "On" : "Off"}
         </button>
+
+        <button
+          type="button"
+          onClick={unmuteVideo}
+          disabled={!videoId}
+          style={{ padding: "10px 14px", fontSize: 16 }}
+        >
+          Unmute
+        </button>
+
 
       </form>
 
